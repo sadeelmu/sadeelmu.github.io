@@ -110,17 +110,14 @@
         // Mandelbulb Rendering Script
         let mandelbulb = [];
         let dim = 50; // Reduced for better performance
-        let i = 0;
-        let j = 0;
+        let scaleFactor = 200; // Scale up the Mandelbulb to make it bigger
 
         function setup() {
             createCanvas(windowWidth, windowHeight, WEBGL);
-            noLoop(); // Prevent continuous drawing; only draw once after setup
 
             // Create Mandelbulb
             for (let i = 0; i < dim; i++) {
                 for (let j = 0; j < dim; j++) {
-                    let edge = false;
                     for (let k = 0; k < dim; k++) {
                         let x = map(i, 0, dim, -1, 1);
                         let y = map(j, 0, dim, -1, 1);
@@ -149,7 +146,7 @@
                             }
 
                             if (iterations > maxiterations) {
-                                mandelbulb.push(createVector(x * 100, y * 100, z * 100));
+                                mandelbulb.push(createVector(x * scaleFactor, y * scaleFactor, z * scaleFactor));
                                 break;
                             }
                         }
@@ -161,11 +158,12 @@
         function draw() {
             background(0);
             rotateY(frameCount * 0.01);
+            rotateX(frameCount * 0.01);
 
             push();
-            translate(-50, 0, 0);
+            translate(0, 0, 0);
             stroke(255);
-            strokeWeight(2);
+            strokeWeight(3); // Increase point size
 
             // Render points
             for (let v of mandelbulb) {
