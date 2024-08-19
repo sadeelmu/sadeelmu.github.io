@@ -1,10 +1,8 @@
 let mandelbulb = [];
-let dim = 50; // Reduced for better performance
+let dim = 128;
 
 function setup() {
     createCanvas(windowWidth, windowHeight, WEBGL);
-    noLoop(); // Prevent continuous drawing; only draw once after setup
-
     // Create Mandelbulb
     for (let i = 0; i < dim; i++) {
         for (let j = 0; j < dim; j++) {
@@ -16,7 +14,7 @@ function setup() {
 
                 let zeta = createVector(0, 0, 0);
                 let iterations = 0;
-                let n = 8; // Reduced n for performance
+                let n = 16;
                 let maxiterations = 10;
 
                 while (true) {
@@ -55,14 +53,10 @@ function draw() {
     background(0);
     rotateY(frameCount * 0.01);
 
-    push();
-    translate(-50, 0, 0);
     for (let v of mandelbulb) {
         stroke(255);
-        strokeWeight(2);
         point(v.x, v.y, v.z);
     }
-    pop();
 }
 
 function spherical(x, y, z) {
