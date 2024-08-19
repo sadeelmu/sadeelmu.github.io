@@ -1,14 +1,12 @@
 const radioPlayer = document.getElementById('radioPlayer');
-const playPauseButton = document.getElementById('playPauseButton');
-const playIcon = '<i class="fas fa-play"></i>';
-const pauseIcon = '<i class="fas fa-pause"></i>';
+const playButton = document.querySelector('button');
 
 function togglePlay() {
     if (radioPlayer.paused) {
         radioPlayer.play();
-        playPauseButton.innerHTML = pauseIcon;
+        playButton.textContent = 'Pause';
     } else {
         radioPlayer.pause();
-        playPauseButton.innerHTML = playIcon;
+        playButton.textContent = 'Play';
     }
 }
