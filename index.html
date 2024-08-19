@@ -12,21 +12,41 @@
             color: white;
             margin: 0;
             overflow: hidden;
+            text-align: center;
+        }
+
+        .title-box {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            color: white;
+        }
+
+        .title-box h1 {
+            font-size: 48px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .title-box h2 {
+            font-size: 24px;
+            margin: 0;
+            padding: 0;
         }
 
         .radio-box {
             border: 2px solid white;
             border-radius: 10px;
-            padding: 20px;
-            width: 500px;
+            padding: 40px;
+            width: 400px;
             background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
             position: absolute;
-            top: 20px;
+            top: 150px;
             left: 20px;
         }
 
         .radio-box h1 {
-            font-size: 24px;
+            font-size: 36px;
             margin-bottom: 20px;
             color: white;
         }
@@ -35,15 +55,15 @@
             background-color: #000000;
             color: white;
             border: 2px solid white;
-            padding: 10px 20px;
-            font-size: 18px;
+            padding: 20px 40px;
+            font-size: 24px;
             cursor: pointer;
             border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
         }
 
         .radio-box button:hover {
@@ -52,11 +72,16 @@
 
         .radio-box button i {
             pointer-events: none; /* Ensures the icon doesn't block the button click */
-            font-size: 24px; /* Adjust the icon size */
+            font-size: 36px; /* Adjust the icon size */
         }
     </style>
 </head>
 <body>
+    <div class="title-box">
+        <h1>sadlye.fm</h1>
+        <h2>why did god spare you?</h2>
+    </div>
+
     <div class="radio-box">
         <h1>sadlye.fm</h1>
         <audio id="radioPlayer" src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/main/god.mp3"></audio>
