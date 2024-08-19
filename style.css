@@ -1,3 +1,5 @@
+/* styles.css */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #000000;
@@ -31,8 +33,18 @@ body {
     font-size: 18px;
     cursor: pointer;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
 }
 
 .radio-box button:hover {
     background-color: #333333;
+}
+
+.radio-box button i {
+    pointer-events: none; /* Ensures the icon doesn't block the button click */
+    font-size: 24px; /* Adjust the icon size */
 }
