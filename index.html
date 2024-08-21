@@ -44,6 +44,7 @@
             top: 150px;
             left: 20px;
             text-align: left;
+            z-index: 10; /* Ensure it's on top of the Mandelbrot */
         }
 
         .playlist-cover img {
@@ -84,6 +85,15 @@
         .control-buttons button:hover {
             background-color: #333333;
         }
+
+        #mandelbrotCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Place it behind the radio box */
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -104,6 +114,9 @@
             <button id="playPauseButton"><i class="fas fa-play"></i> Play</button>
         </div>
     </div>
+
+    <!-- Mandelbrot Canvas -->
+    <canvas id="mandelbrotCanvas"></canvas>
 
     <script>
         const clientId = '6971848dee6d4f8ea9086d4da85a67f0';
@@ -138,22 +151,6 @@
             document.getElementById('playlistCover').src = data.images[0].url;
         }
 
-        async function getCurrentlyPlayingTrack(accessToken) {
-            const result = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ' + accessToken
-                }
-            });
-
-            if (result.status === 204 || result.status > 400) {
-                document.getElementById('currentTrack').textContent = 'Currently Playing: None';
-            } else {
-                const data = await result.json();
-                document.getElementById('currentTrack').textContent = 'Currently Playing: ' + data.item.name;
-            }
-        }
-
         async function playPauseTrack() {
             const playPauseButton = document.getElementById('playPauseButton');
             if (!isPlaying) {
@@ -170,13 +167,46 @@
         async function loadSpotifyData() {
             const accessToken = await getAccessToken(clientId, clientSecret);
             await getPlaylistDetails(accessToken);
-            // Optionally load currently playing track
-            await getCurrentlyPlayingTrack(accessToken);
 
             document.getElementById('playPauseButton').addEventListener('click', playPauseTrack);
         }
 
         document.addEventListener('DOMContentLoaded', loadSpotifyData);
+
+        // Mandelbrot Rendering Script
+        function drawMandelbrot() {
+            const canvas = document.getElementById('mandelbrotCanvas');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width = window.innerWidth;
+            const height = canvas.height = window.innerHeight;
+
+            const maxIterations = 100;
+            const zoom = 300;
+            const panX = 2;
+            const panY = 1.5;
+
+            for (let x = 0; x < width; x++) {
+                for (let y = 0; y < height; y++) {
+                    let zx = (x / zoom) - panX;
+                    let zy = (y / zoom) - panY;
+                    let cX = zx;
+                    let cY = zy;
+                    let i = maxIterations;
+                    while (zx * zx + zy * zy < 4 && i > 0) {
+                        let tmp = zx * zx - zy * zy + cX;
+                        zy = 2.0 * zx * zy + cY;
+                        zx = tmp;
+                        i--;
+                    }
+
+                    const pixelColor = (i === 0) ? 0 : i * 16;
+                    ctx.fillStyle = `rgb(${pixelColor}, ${pixelColor}, ${pixelColor})`;
+                    ctx.fillRect(x, y, 1, 1);
+                }
+            }
+        }
+
+        drawMandelbrot();
     </script>
 </body>
 </html>
