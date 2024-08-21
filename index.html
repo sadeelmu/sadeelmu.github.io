@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sadlye.fm</title>
+    <title>Sadlye.fm</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
     <style>
         body {
@@ -109,8 +109,10 @@
 
         // Mandelbulb Rendering Script
         let mandelbulb = [];
-        let dim = 50; // Reduced for better performance
-        let scaleFactor = 200; // Scale up the Mandelbulb to make it bigger
+        let dim = 128; // Increased for more detail
+        let scaleFactor = 80; // Scale down for logo size
+        let n = 16; // Matching the original Processing code
+        let maxiterations = 10; // Keeping this the same
 
         function setup() {
             createCanvas(windowWidth, windowHeight, WEBGL);
@@ -125,8 +127,6 @@
 
                         let zeta = createVector(0, 0, 0);
                         let iterations = 0;
-                        let n = 8; // Reduced n for performance
-                        let maxiterations = 10;
 
                         while (true) {
                             let sphericalZeta = spherical(zeta.x, zeta.y, zeta.z);
@@ -161,9 +161,9 @@
             rotateX(frameCount * 0.01);
 
             push();
-            translate(0, 0, 0);
+            translate(0, 0, 0); // Center the Mandelbulb
             stroke(255);
-            strokeWeight(3); // Increase point size
+            strokeWeight(2); // Increase point size slightly for visibility
 
             // Render points
             for (let v of mandelbulb) {
