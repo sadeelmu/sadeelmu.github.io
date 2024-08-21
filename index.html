@@ -34,47 +34,55 @@
             padding: 0;
         }
 
-        .playlist-info {
-            margin: 20px auto;
-            width: 80%;
+        .radio-box {
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px; /* Adjusted width */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            position: absolute;
+            top: 150px;
+            left: 20px;
             text-align: left;
-            color: white;
-        }
-
-        .playlist-cover {
-            float: left;
-            margin-right: 20px;
         }
 
         .playlist-cover img {
             border-radius: 12px;
-            width: 100px;
+            width: 100%;
         }
 
         .playlist-details {
-            display: inline-block;
-            vertical-align: top;
-            max-width: 70%;
+            margin-top: 15px;
         }
 
         .playlist-details h2 {
-            font-size: 24px;
-            margin: 0;
+            font-size: 18px;
+            margin: 5px 0;
         }
 
         .playlist-details h3 {
-            font-size: 18px;
-            margin: 10px 0 0;
+            font-size: 14px;
+            margin: 5px 0;
             color: #1DB954;
         }
 
-        .spotify-embed {
-            width: 100%;
-            height: 352px;
-            border: none;
-            border-radius: 12px;
-            overflow: hidden;
+        .control-buttons {
             margin-top: 20px;
+            text-align: center;
+        }
+
+        .control-buttons button {
+            background-color: #000000;
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .control-buttons button:hover {
+            background-color: #333333;
         }
     </style>
 </head>
@@ -84,7 +92,7 @@
         <h2>why did god spare you?</h2>
     </div>
 
-    <div class="playlist-info">
+    <div class="radio-box">
         <div class="playlist-cover">
             <img id="playlistCover" src="" alt="Playlist Cover">
         </div>
@@ -92,14 +100,16 @@
             <h2 id="playlistName">Playlist Name</h2>
             <h3 id="currentTrack">Currently Playing: None</h3>
         </div>
+        <div class="control-buttons">
+            <button id="playPauseButton"><i class="fas fa-play"></i> Play</button>
+        </div>
     </div>
-
-    <iframe class="spotify-embed" src="https://open.spotify.com/embed/playlist/6QgubomqWSMmM5cBN2d8V3?utm_source=generator" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
     <script>
         const clientId = '6971848dee6d4f8ea9086d4da85a67f0';
         const clientSecret = 'b14b1ac579234bdb9c0580e129c807a2';
         const playlistId = '6QgubomqWSMmM5cBN2d8V3';
+        let isPlaying = false;
 
         async function getAccessToken(clientId, clientSecret) {
             const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -128,9 +138,42 @@
             document.getElementById('playlistCover').src = data.images[0].url;
         }
 
+        async function getCurrentlyPlayingTrack(accessToken) {
+            const result = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                }
+            });
+
+            if (result.status === 204 || result.status > 400) {
+                document.getElementById('currentTrack').textContent = 'Currently Playing: None';
+            } else {
+                const data = await result.json();
+                document.getElementById('currentTrack').textContent = 'Currently Playing: ' + data.item.name;
+            }
+        }
+
+        async function playPauseTrack() {
+            const playPauseButton = document.getElementById('playPauseButton');
+            if (!isPlaying) {
+                playPauseButton.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                isPlaying = true;
+                // Logic to start playback via Spotify API goes here
+            } else {
+                playPauseButton.innerHTML = '<i class="fas fa-play"></i> Play';
+                isPlaying = false;
+                // Logic to pause playback via Spotify API goes here
+            }
+        }
+
         async function loadSpotifyData() {
             const accessToken = await getAccessToken(clientId, clientSecret);
             await getPlaylistDetails(accessToken);
+            // Optionally load currently playing track
+            await getCurrentlyPlayingTrack(accessToken);
+
+            document.getElementById('playPauseButton').addEventListener('click', playPauseTrack);
         }
 
         document.addEventListener('DOMContentLoaded', loadSpotifyData);
