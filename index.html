@@ -108,10 +108,10 @@
 
         // Mandelbulb Rendering Script
         let mandelbulb = [];
-        let dim = 128; // Increased for more detail
-        let scaleFactor = 80; // Scale down for logo size
-        let n = 16; // Matching the original Processing code
-        let maxiterations = 10; // Keeping this the same
+        let dim = 50; // Reduced for faster load times
+        let scaleFactor = 100; // Adjusted scale for better visibility
+        let n = 8; // Reduced for performance
+        let maxiterations = 5; // Reduced iterations for faster rendering
 
         function setup() {
             createCanvas(windowWidth, windowHeight, WEBGL);
