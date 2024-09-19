@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sadlye.fm</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Include the custom font */
+        @font-face {
+            font-family: 'QaskinBlack';
+            src: url('fonts/QaskinBlack_PersonalUse.ttf') format('truetype');
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'QaskinBlack', Arial, sans-serif;
             background-color: #000000;
             color: white;
             margin: 0;
@@ -43,7 +49,7 @@
             border: 2px solid white;
             border-radius: 10px;
             padding: 20px;
-            width: 300px;
+            width: 350px;
             background-color: rgba(0, 0, 0, 0.7);
             position: absolute;
             top: 150px;
@@ -52,41 +58,62 @@
             z-index: 10;
         }
 
-        .cd {
-            width: 150px;
+        /* Cassette player design */
+        .cassette {
+            width: 300px;
             height: 150px;
-            border-radius: 50%;
-            border: 6px solid #fff;
-            background: radial-gradient(circle, #666, #333);
-            margin: 0 auto 20px;
+            background-color: #444;
+            border-radius: 10px;
             position: relative;
+            margin: 0 auto 20px;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            border: 2px solid #000;
         }
 
-        .cd::after {
+        .cassette::before, .cassette::after {
             content: "";
-            width: 30px;
-            height: 30px;
-            background: #000;
+            width: 60px;
+            height: 60px;
+            background-color: #222;
             border-radius: 50%;
-            border: 4px solid #fff;
+            border: 4px solid #555;
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateY(-50%);
         }
 
-        .cd.spin {
-            animation: spin 4s linear infinite;
+        .cassette::before {
+            left: 30px;
         }
 
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
+        .cassette::after {
+            right: 30px;
+        }
+
+        .cassette-tape {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-color: #333;
+            transform: translateY(-50%);
+        }
+
+        .cassette-tape::before, .cassette-tape::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background-color: #222;
+        }
+
+        .cassette-tape::before {
+            left: 30px;
+        }
+
+        .cassette-tape::after {
+            right: 30px;
         }
 
         .control-buttons {
@@ -125,8 +152,10 @@
     </div>
 
     <div class="radio-box">
-        <!-- CD Player Design -->
-        <div class="cd" id="cd"></div>
+        <!-- Cassette Player Design -->
+        <div class="cassette">
+            <div class="cassette-tape"></div>
+        </div>
         <div class="playlist-details">
             <h2 id="trackName">Track Name</h2>
         </div>
@@ -144,17 +173,17 @@
         // Set up the audio player
         const audioPlayer = document.getElementById('audioPlayer');
         const playButton = document.getElementById('playButton');
-        const cd = document.getElementById('cd');
         const trackName = document.getElementById('trackName');
 
+        // Replace 'your-audio-file.mp3' with the actual URL or path to your audio file
         const tracks = [
             {
-                name: 'habibi',
-                src: 'habibi.mp3'
+                name: 'Track 1',
+                src: 'your-audio-file.mp3'
             },
             {
-                name: 'habibi 2',
-                src: 'habibi2.mp3'
+                name: 'Track 2',
+                src: 'your-second-audio-file.mp3'
             }
         ];
 
@@ -169,11 +198,9 @@
             if (audioPlayer.paused) {
                 audioPlayer.play();
                 playButton.innerHTML = '<i class="fas fa-pause"></i> Pause';
-                cd.classList.add('spin');
             } else {
                 audioPlayer.pause();
                 playButton.innerHTML = '<i class="fas fa-play"></i> Play';
-                cd.classList.remove('spin');
             }
         });
 
