@@ -39,34 +39,58 @@
         .radio-box {
             border: 2px solid #bbb;
             border-radius: 10px;
-            padding: 20px;
-            width: 350px;
-            background-color: #f0f0f0; /* Silver look */
-            box-shadow: 10px 10px 0 #333;
+            padding: 40px;
+            width: 450px;
+            background-color: #e0e0e0; /* Silver chrome look */
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
             position: absolute;
             top: 150px;
-            right: 20px; /* Align to the right */
+            right: 20px;
             text-align: center;
             z-index: 10;
         }
 
         /* CD design */
-        .cd {
-            width: 150px;
-            height: 150px;
-            background-color: #ddd; /* Light silver */
+        .cd-container {
+            width: 280px;
+            height: 280px;
+            background-color: #c0c0c0;
             border-radius: 50%;
             position: relative;
             margin: 0 auto 20px;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
             overflow: hidden;
             border: 5px solid #aaa;
+        }
+
+        .cd {
+            width: 240px;
+            height: 240px;
+            background-color: #ddd;
+            border-radius: 50%;
+            position: relative;
+            top: 20px;
+            left: 20px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
         }
 
         .cd img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
+        }
+
+        /* CD Cover */
+        .cd-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            display: none; /* Initially hidden */
         }
 
         .cd.spin {
@@ -128,9 +152,13 @@
 
     <div class="radio-box">
         <!-- CD Player Design -->
-        <div class="cd" id="cdDisc">
-            <img id="cdCover" src="cover-placeholder.jpg" alt="CD Cover"> <!-- Placeholder for the CD cover -->
+        <div class="cd-container">
+            <div class="cd" id="cdDisc">
+                <img id="cdCover" src="cover-placeholder.jpg" alt="CD Cover"> <!-- Placeholder for the CD cover -->
+            </div>
+            <div class="cd-cover" id="cdCoverOverlay"></div>
         </div>
+
         <div class="playlist-details">
             <h2 id="trackName">Track Name</h2>
         </div>
@@ -157,17 +185,18 @@
         const trackName = document.getElementById('trackName');
         const cdDisc = document.getElementById('cdDisc');
         const cdCover = document.getElementById('cdCover');
+        const cdCoverOverlay = document.getElementById('cdCoverOverlay');
 
         const tracks = [
             {
-                name: 'god',
-                src: 'god.mp3',
-                cover: 'sadeel.jpg'  
+                name: 'Track 1',
+                src: 'track1.mp3',
+                cover: 'cover1.jpg'  
             },
             {
-                name: 'حبيبي',
-                src: 'habibi.mp3',
-                cover: 'sadeel2.jpg'  
+                name: 'Track 2',
+                src: 'track2.mp3',
+                cover: 'cover2.jpg'  
             }
         ];
 
@@ -184,6 +213,7 @@
             playButton.style.display = 'none';
             pauseButton.style.display = 'inline-block';
             cdDisc.classList.add('spin');
+            cdCoverOverlay.style.display = 'none'; // Hide the cover when playing
         });
 
         pauseButton.addEventListener('click', () => {
@@ -191,6 +221,7 @@
             playButton.style.display = 'inline-block';
             pauseButton.style.display = 'none';
             cdDisc.classList.remove('spin');
+            cdCoverOverlay.style.display = 'block'; // Show the cover when paused
         });
 
         nextButton.addEventListener('click', () => {
@@ -200,6 +231,7 @@
             playButton.style.display = 'none';
             pauseButton.style.display = 'inline-block';
             cdDisc.classList.add('spin');
+            cdCoverOverlay.style.display = 'none'; // Hide the cover when playing
         });
 
         prevButton.addEventListener('click', () => {
@@ -209,6 +241,7 @@
             playButton.style.display = 'none';
             pauseButton.style.display = 'inline-block';
             cdDisc.classList.add('spin');
+            cdCoverOverlay.style.display = 'none'; // Hide the cover when playing
         });
 
         audioPlayer.addEventListener('ended', () => {
@@ -255,6 +288,5 @@
 
         drawMandelbrot();
     </script>
-
 </body>
 </html>
