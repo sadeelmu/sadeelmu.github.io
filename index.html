@@ -19,8 +19,8 @@
             position: absolute;
             top: 20px;
             width: 100%;
-            z-index: 20; 
-            padding: 10px 0; 
+            z-index: 20;
+            padding: 10px 0;
             color: #333;
         }
 
@@ -37,15 +37,15 @@
         }
 
         .radio-box {
-            border: 2px solid #bbb;
-            border-radius: 10px;
+            border: 2px solid #999;
+            border-radius: 20px;
             padding: 20px;
             width: 350px;
-            background-color: #f0f0f0; /* Silver look */
-            box-shadow: 10px 10px 0 #333;
+            background: linear-gradient(145deg, #e0e0e0, #a0a0a0); /* Silver metallic look */
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
             position: absolute;
             top: 150px;
-            right: 20px; /* Align to the right */
+            right: 20px;
             text-align: center;
             z-index: 10;
         }
@@ -80,6 +80,22 @@
             to {
                 transform: rotate(360deg);
             }
+        }
+
+        /* Display area to simulate CD player screen */
+        .display {
+            background-color: #222;
+            color: #0f0;
+            font-family: monospace;
+            width: 220px;
+            height: 40px;
+            line-height: 40px;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .control-buttons {
@@ -131,15 +147,20 @@
         <div class="cd" id="cdDisc">
             <img id="cdCover" src="cover-placeholder.jpg" alt="CD Cover"> <!-- Placeholder for the CD cover -->
         </div>
-        <div class="playlist-details">
+
+        <!-- Simulated Display -->
+        <div class="display">
             <h2 id="trackName">Track Name</h2>
         </div>
+
+        <!-- Control Buttons -->
         <div class="control-buttons">
             <button id="prevButton"><i class="fas fa-backward"></i></button>
             <button id="playButton"><i class="fas fa-play"></i></button>
             <button id="pauseButton" style="display:none;"><i class="fas fa-pause"></i></button>
             <button id="nextButton"><i class="fas fa-forward"></i></button>
         </div>
+
         <!-- Audio Player -->
         <audio id="audioPlayer" src="your-audio-file.mp3"></audio>
     </div>
@@ -162,12 +183,12 @@
             {
                 name: 'Habibi',
                 src: 'habibi.mp3',
-                cover: 'sadeel.HEIC'  
+                cover: 'sadeel.jpg'  
             },
             {
                 name: 'Habibi Boiler',
                 src: 'habibi2.mp3',
-                cover: 'sadeel2.HEIC'  
+                cover: 'sadeel2.jpg'  
             }
         ];
 
