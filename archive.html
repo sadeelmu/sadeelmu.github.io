@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive | sadlye.fm</title>
+    <title>Vintage Archive | sadlye.fm</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -12,6 +12,7 @@
             color: white;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
 
         .title-box {
@@ -19,6 +20,8 @@
             padding: 10px 0;
             text-align: center;
             color: black;
+            position: relative;
+            z-index: 10;
         }
 
         .title-box h1 {
@@ -33,67 +36,38 @@
             color: black;
         }
 
-        .repository-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
+        .archive-content-wrapper {
             padding: 20px;
-            margin-top: 20px;
-        }
-
-        .repository-item {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
             position: relative;
-            transition: transform 0.3s ease;
-            overflow: hidden;
+            z-index: 20;
         }
 
-        .repository-item img,
-        .repository-item video {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-        .repository-item:hover {
-            transform: scale(1.05);
-        }
-
-        .repository-item .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 8px;
-        }
-
-        .repository-item:hover .overlay {
-            opacity: 1;
-        }
-
-        .repository-item .description {
-            padding: 10px;
-            color: #ccc;
-            font-size: 14px;
-        }
-
-        .repository-item .title {
-            font-size: 16px;
-            font-weight: bold;
+        .archive-item {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
             color: white;
-            margin: 10px;
+            text-align: left;
         }
 
-        .repository-item .info-label {
+        .archive-item img,
+        .archive-item video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .archive-item .info-label {
             font-weight: bold;
             color: #fffa;
         }
 
-        .repository-item .info-value {
+        .archive-item .info-value {
             color: #ccc;
         }
 
@@ -113,53 +87,42 @@
         <h2>Cartography of Darkness</h2>
     </div>
 
-    <!-- Repository Grid -->
-    <div class="repository-grid">
-        <!-- Example Repository Item 1 -->
-        <a href="detail.html" class="repository-item">
+    <div class="archive-content-wrapper">
+        <!-- Archive Item 1 (Image 1) -->
+        <div class="archive-item">
             <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/image1.png" alt="Image 1">
-            <div class="overlay"></div>
-            <div class="description">
-                <div class="title">Image 1</div>
-                <p>
-                    <span class="info-label">Media Type:</span> Photograph<br>
-                    <span class="info-label">Content:</span> Cable, Electric Pole, Residential, Road, Vegetation, Vehicle<br>
-                    <span class="info-label">Container:</span> Album<br>
-                    <span class="info-label">Theme:</span> Electricity, Energy<br>
-                    <span class="info-label">Author:</span> Pierre Malychef
-                </p>
-            </div>
-        </a>
-        <!-- Example Repository Item 2 -->
-        <a href="detail.html" class="repository-item">
+            <h3>Image 1</h3>
+            <p><span class="info-label">Media Type:</span> Photograph</p>
+            <p><span class="info-label">Content:</span> Photograph of residential area and electric poles, depicting urban life and the electric grid.</p>
+            <p><span class="info-label">Container:</span> Album</p>
+            <p><span class="info-label">Theme:</span> Electricity, Energy</p>
+            <p><span class="info-label">Author:</span> Pierre Malychef</p>
+        </div>
+        
+        <!-- Archive Item 2 (Image 2) -->
+        <div class="archive-item">
             <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/image2.png" alt="Image 2">
-            <div class="overlay"></div>
-            <div class="description">
-                <div class="title">Image 2</div>
-                <p>
-                    <span class="info-label">Media Type:</span> Photograph<br>
-                    <span class="info-label">Content:</span> Electric Pole, Residential, Road, Vegetation, Vehicle<br>
-                    <span class="info-label">Container:</span> Album<br>
-                    <span class="info-label">Theme:</span> Electricity, Energy<br>
-                    <span class="info-label">Author:</span> Pierre Malychef
-                </p>
-            </div>
-        </a>
-        <!-- Example Repository Item 3 (Video Thumbnail) -->
-        <a href="detail.html" class="repository-item">
-            <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/video_thumbnail.png" alt="Video Thumbnail">
-            <div class="overlay"></div>
-            <div class="description">
-                <div class="title">Video 1</div>
-                <p>
-                    <span class="info-label">Media Type:</span> Video<br>
-                    <span class="info-label">Content:</span> Electricity Generation, Power Plant<br>
-                    <span class="info-label">Container:</span> Digital<br>
-                    <span class="info-label">Theme:</span> Energy Production<br>
-                    <span class="info-label">Author:</span> Omar Itani
-                </p>
-            </div>
-        </a>
+            <h3>Image 2</h3>
+            <p><span class="info-label">Media Type:</span> Photograph</p>
+            <p><span class="info-label">Content:</span> Close-up photograph of electricity infrastructure, showing the technical aspect of power systems.</p>
+            <p><span class="info-label">Container:</span> Album</p>
+            <p><span class="info-label">Theme:</span> Electricity, Energy</p>
+            <p><span class="info-label">Author:</span> Pierre Malychef</p>
+        </div>
+        
+        <!-- Archive Item 3 (Video) -->
+        <div class="archive-item">
+            <video controls>
+                <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/algeria.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3>Video 1</h3>
+            <p><span class="info-label">Media Type:</span> Video</p>
+            <p><span class="info-label">Content:</span> Video showing electricity generation from a power plant, highlighting energy production and environmental concerns.</p>
+            <p><span class="info-label">Container:</span> Digital</p>
+            <p><span class="info-label">Theme:</span> Energy Production, Environmental Concerns</p>
+            <p><span class="info-label">Author:</span> Omar Itani</p>
+        </div>
     </div>
 
     <!-- Mandelbrot Canvas (Background) -->
