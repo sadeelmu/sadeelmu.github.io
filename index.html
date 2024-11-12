@@ -57,58 +57,61 @@
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             color: white;
+            position: relative;
         }
 
-        h2 {
+        .repository-box h2 {
             font-size: 28px;
-            text-align: center;
             margin-bottom: 20px;
             color: #fff;
         }
 
-        .video-grid {
+        .repository-box .repo-description {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .repo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 15px;
         }
 
-        .video-item {
+        .repo-item {
             position: relative;
             overflow: hidden;
             border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .video-item img {
+        .repo-item img {
             width: 100%;
             border-radius: 8px;
             transition: transform 0.3s ease;
         }
 
-        .video-item:hover img {
+        .repo-item img:hover {
             transform: scale(1.05);
         }
 
-        .video-item h3 {
-            margin-top: 10px;
-            font-size: 20px;
+        .repo-item h3 {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
             color: white;
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 5px;
+            border-radius: 5px;
         }
 
-        .video-item p {
-            font-size: 14px;
-            color: white;
-            text-align: center;
-            padding-top: 10px;
-        }
-
-        .video-item iframe {
+        /* Optional: Modal or hover effect for video or images (if needed) */
+        .repo-item iframe {
             width: 100%;
             height: 200px;
             border-radius: 8px;
         }
-
     </style>
 </head>
 <body>
@@ -118,7 +121,7 @@
     </div>
 
     <div class="main-content-wrapper">
-        <!-- Radio Box -->
+        <!-- Radio Box (Existing) -->
         <div class="radio-box">
             <div class="playlist-details">
                 <h1 id="playlistName"></h1>
@@ -131,11 +134,27 @@
             </div>
         </div>
 
-        <!-- Multimedia Repository Box -->
+        <!-- Multimedia Repository Box (New) -->
         <div class="repository-box">
-            <h2>Multimedia Repository</h2>
-            <div class="video-grid" id="videoGrid">
-                <!-- Video items will be dynamically inserted here -->
+            <h2>REPOSITORY</h2>
+            <div class="repo-description">
+                <p>a transclusive repository comprised of multiple media, trans-disciplinary taxonomies and personal archives we have digitised for free re-use through a CC license</p>
+            </div>
+            <div class="repo-grid">
+                <!-- Example Repo Item -->
+                <div class="repo-item">
+                    <img src="path/to/image1.jpg" alt="Image 1">
+                    <h3>Title 1</h3>
+                </div>
+                <div class="repo-item">
+                    <img src="path/to/image2.jpg" alt="Image 2">
+                    <h3>Title 2</h3>
+                </div>
+                <div class="repo-item">
+                    <img src="path/to/image3.jpg" alt="Image 3">
+                    <h3>Title 3</h3>
+                </div>
+                <!-- Add more repo items as needed -->
             </div>
         </div>
     </div>
@@ -143,38 +162,33 @@
     <script>
         const videos = [
             {
-                title: 'Artwork Video 1',
-                thumbnail: 'path/to/thumbnail1.jpg',
-                description: 'This is a description of Artwork Video 1.',
-                videoUrl: 'https://www.youtube.com/embed/example1'
+                title: 'Artwork 1',
+                thumbnail: 'path/to/image1.jpg',
+                description: 'This is a description of Artwork 1.'
             },
             {
-                title: 'Artwork Video 2',
-                thumbnail: 'path/to/thumbnail2.jpg',
-                description: 'This is a description of Artwork Video 2.',
-                videoUrl: 'https://www.youtube.com/embed/example2'
+                title: 'Artwork 2',
+                thumbnail: 'path/to/image2.jpg',
+                description: 'This is a description of Artwork 2.'
             },
             {
-                title: 'Artwork Video 3',
-                thumbnail: 'path/to/thumbnail3.jpg',
-                description: 'This is a description of Artwork Video 3.',
-                videoUrl: 'https://www.youtube.com/embed/example3'
+                title: 'Artwork 3',
+                thumbnail: 'path/to/image3.jpg',
+                description: 'This is a description of Artwork 3.'
             }
-            // Add more videos as needed
+            // Add more videos/images as needed
         ];
 
-        const videoGrid = document.getElementById('videoGrid');
+        const repoGrid = document.querySelector('.repo-grid');
 
         videos.forEach(video => {
-            const videoItem = document.createElement('div');
-            videoItem.className = 'video-item';
-            videoItem.innerHTML = `
+            const repoItem = document.createElement('div');
+            repoItem.className = 'repo-item';
+            repoItem.innerHTML = `
                 <img src="${video.thumbnail}" alt="${video.title}">
                 <h3>${video.title}</h3>
-                <p>${video.description}</p>
-                <iframe src="${video.videoUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             `;
-            videoGrid.appendChild(videoItem);
+            repoGrid.appendChild(repoItem);
         });
     </script>
 </body>
