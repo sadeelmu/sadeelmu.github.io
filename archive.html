@@ -3,108 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vintage Archive</title>
+    <title>Archive | sadlye.fm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #111;
-            color: #eee;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: white;
             margin: 0;
             padding: 0;
         }
 
-        .header {
+        .title-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
             text-align: center;
-            background-color: #222;
-            padding: 20px;
-            font-size: 28px;
+            color: black;
         }
 
-        .archive-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
+        .title-box h1 {
+            font-size: 50px;
+            margin: 0;
         }
 
-        .archive-item {
+        .filter-container {
+            display: flex;
+            justify-content: space-around;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+        }
+
+        .filter-container select {
             background-color: #333;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .archive-item img, .archive-item video {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .archive-item h3 {
-            font-size: 20px;
-            margin-top: 10px;
-            color: #ffbb00;
-        }
-
-        .archive-item p {
-            color: #ddd;
-            font-size: 14px;
-        }
-
-        .archive-item a {
-            display: inline-block;
-            margin-top: 10px;
-            text-decoration: none;
-            background-color: #ffbb00;
-            padding: 5px 10px;
-            color: #000;
+            color: white;
+            border: none;
+            padding: 5px;
+            font-size: 16px;
             border-radius: 5px;
         }
 
-        .archive-item a:hover {
-            background-color: #ffaa00;
+        .repository-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            margin-top: 20px;
         }
 
-        .footer {
-            text-align: center;
+        .repository-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .repository-item img,
+        .repository-item video {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .repository-item:hover {
+            transform: scale(1.05);
+        }
+
+        .repository-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .repository-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .repository-item .description {
             padding: 10px;
-            background-color: #222;
             color: #ccc;
+            font-size: 14px;
+        }
+
+        .repository-item .title {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            margin: 10px;
         }
     </style>
 </head>
 <body>
-
-    <div class="header">
-        Vintage Archive
+    <div class="title-box">
+        <h1>Vintage Archive</h1>
+        <h2>Cartography of Darkness</h2>
     </div>
 
-    <div class="archive-container">
-        <!-- Example Archive Item -->
-        <div class="archive-item">
+    <!-- Filters for Repository Items -->
+    <div class="filter-container">
+        <select>
+            <option>Media Type</option>
+            <option>Photograph</option>
+            <option>Audio</option>
+            <option>Note</option>
+        </select>
+        <select>
+            <option>Content</option>
+            <option>Electricity</option>
+            <option>Pollution</option>
+            <option>Waste</option>
+        </select>
+        <select>
+            <option>Container</option>
+            <option>Envelope</option>
+            <option>Album</option>
+        </select>
+        <select>
+            <option>Theme</option>
+            <option>Quarry</option>
+            <option>Toxic Waste</option>
+            <option>Energy</option>
+        </select>
+        <select>
+            <option>Author</option>
+            <option>Pierre Malychef</option>
+            <option>Omar Itani</option>
+        </select>
+        <input type="text" placeholder="Search the repository" style="padding: 5px; border-radius: 5px;">
+        <button style="padding: 5px 15px; border-radius: 5px; background-color: #333; color: white;">Search</button>
+    </div>
+
+    <!-- Repository Grid -->
+    <div class="repository-grid">
+        <!-- Example Repository Item 1 -->
+        <a href="detail.html" class="repository-item">
             <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/image1.png" alt="Image 1">
-            <h3>Image 1 Title</h3>
-            <p>This is the description of the first image in the vintage archive.</p>
-            <a href="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/image1.png" target="_blank">View Full Image</a>
-        </div>
-
-        <div class="archive-item">
-            <video controls>
-                <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/algeria.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <h3>Algeria Video</h3>
-            <p>This is the description for the Algeria video.</p>
-            <a href="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/algeria.mp4" target="_blank">View Full Video</a>
-        </div>
-        
-        <!-- Add more items as necessary -->
+            <div class="overlay"></div>
+            <div class="description">
+                <div class="title">Image 1</div>
+                <p>Photograph of residential area and electric poles, depicting urban life and the electric grid.</p>
+            </div>
+        </a>
+        <!-- Example Repository Item 2 -->
+        <a href="detail.html" class="repository-item">
+            <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/image2.png" alt="Image 2">
+            <div class="overlay"></div>
+            <div class="description">
+                <div class="title">Image 2</div>
+                <p>Close-up photograph of electricity infrastructure, showing the technical aspect of power systems.</p>
+            </div>
+        </a>
+        <!-- Example Repository Item 3 (Video Thumbnail) -->
+        <a href="detail.html" class="repository-item">
+            <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/video_thumbnail.png" alt="Video Thumbnail">
+            <div class="overlay"></div>
+            <div class="description">
+                <div class="title">Video 1</div>
+                <p>Video showing electricity generation from a power plant, highlighting energy production and environmental concerns.</p>
+            </div>
+        </a>
     </div>
 
-    <div class="footer">
-        2000s Style - Retro Vibes Only
-    </div>
+    <!-- Mandelbrot Canvas (Background) -->
+    <canvas id="mandelbrotCanvas"></canvas>
 
+    <script>
+        // Mandelbrot Rendering Script (as before)
+        function drawMandelbrot() {
+            const canvas = document.getElementById('mandelbrotCanvas');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width = window.innerWidth;
+            const height = canvas.height = window.innerHeight;
+
+            const maxIterations = 100;
+            const zoom = 300;
+            const panX = 2;
+            const panY = 1.5;
+
+            for (let x = 0; x < width; x++) {
+                for (let y = 0; y < height; y++) {
+                    let zx = (x / zoom) - panX;
+                    let zy = (y / zoom) - panY;
+                    let cX = zx;
+                    let cY = zy;
+                    let i = maxIterations;
+                    while (zx * zx + zy * zy < 4 && i > 0) {
+                        let tmp = zx * zx - zy * zy + cX;
+                        zy = 2.0 * zx * zy + cY;
+                        zx = tmp;
+                        i--;
+                    }
+
+                    const pixelColor = (i === 0) ? 0 : i * 16;
+                    ctx.fillStyle = `rgb(${pixelColor}, ${pixelColor}, ${pixelColor})`;
+                    ctx.fillRect(x, y, 1, 1);
+                }
+            }
+        }
+
+        drawMandelbrot();
+    </script>
 </body>
 </html>
