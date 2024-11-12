@@ -45,72 +45,100 @@
             align-items: flex-start;
             gap: 20px;
             margin: 20px;
+            position: relative;
+            z-index: 20;
         }
 
         .radio-box {
             width: 48%;
-        }
-
-        .repository-box {
-            width: 48%;
+            border: 2px solid white;
+            border-radius: 10px;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            color: white;
-            position: relative;
         }
 
-        .repository-box h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
+        .repository-panel {
+            width: 48%;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .repository-panel .panel__inner {
+            text-align: left;
+        }
+
+        .repository-panel .panel__title h4 {
+            margin: 0;
+            font-size: 24px;
             color: #fff;
         }
 
-        .repository-box .repo-description {
-            font-size: 16px;
+        .repository-panel .panel__title a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .repository-panel .panel__description {
+            margin-top: 10px;
             margin-bottom: 20px;
-            color: #ddd;
+            font-size: 16px;
+            color: #ccc;
         }
 
-        .repo-grid {
+        .repository-panel .panel__description .ar {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .repository-panel .panel__repositorygrid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
         }
 
-        .repo-item {
+        .repository-panel .panel__repositorygrid a {
             position: relative;
             overflow: hidden;
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        .repo-item img {
+        .repository-panel .panel__repositorygrid img {
             width: 100%;
+            height: auto;
             border-radius: 8px;
             transition: transform 0.3s ease;
         }
 
-        .repo-item img:hover {
+        .repository-panel .panel__repositorygrid a:hover img {
             transform: scale(1.05);
         }
 
-        .repo-item h3 {
+        .repository-panel .panel__repositorygrid .attachmentpreview__overlay {
             position: absolute;
-            bottom: 10px;
-            left: 10px;
-            color: white;
-            font-size: 18px;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 5px;
-            border-radius: 5px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        /* Optional: Modal or hover effect for video or images (if needed) */
-        .repo-item iframe {
+        .repository-panel .panel__repositorygrid a:hover .attachmentpreview__overlay {
+            opacity: 1;
+        }
+
+        #mandelbrotCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
             width: 100%;
-            height: 200px;
-            border-radius: 8px;
+            height: 100%;
         }
     </style>
 </head>
@@ -121,7 +149,7 @@
     </div>
 
     <div class="main-content-wrapper">
-        <!-- Radio Box (Existing) -->
+        <!-- Radio Box -->
         <div class="radio-box">
             <div class="playlist-details">
                 <h1 id="playlistName"></h1>
@@ -134,62 +162,119 @@
             </div>
         </div>
 
-        <!-- Multimedia Repository Box (New) -->
-        <div class="repository-box">
-            <h2>REPOSITORY</h2>
-            <div class="repo-description">
-                <p>a transclusive repository comprised of multiple media, trans-disciplinary taxonomies and personal archives we have digitised for free re-use through a CC license</p>
-            </div>
-            <div class="repo-grid">
-                <!-- Example Repo Item -->
-                <div class="repo-item">
-                    <img src="path/to/image1.jpg" alt="Image 1">
-                    <h3>Title 1</h3>
+        <!-- Repository Panel -->
+        <div class="repository-panel panel--repository panel--active">
+            <div class="panel__inner">
+                <div class="panel__title">
+                    <h4>
+                        <a href="https://dark.society.systems/repository">
+                            Repository الحاوية
+                        </a>
+                    </h4>
                 </div>
-                <div class="repo-item">
-                    <img src="path/to/image2.jpg" alt="Image 2">
-                    <h3>Title 2</h3>
+                <div class="panel__description">
+                    º a transclusive repository comprised of multiple media, trans-disciplinary taxonomies and personal archives we have digitised for free re-use through a CC license º
+                    <div class="ar">
+                        <p class="p1" dir="rtl">º حاوية تضمينيّة مؤلّفة من وسائط وتصنيفات ومحفوظات عدّة قد أرشفناها بغرض تأريخها وإعادة استخدامها بواسطة رخصة مشاعة وغير تجارية º</p>
+                    </div>
+                    <a class="pill" href="https://dark.society.systems/repository">⦷ Enter Repository ⦶</a>
                 </div>
-                <div class="repo-item">
-                    <img src="path/to/image3.jpg" alt="Image 3">
-                    <h3>Title 3</h3>
+                <div class="panel__repositorygrid">
+                    <!-- Example Repository Items -->
+                    <a href="https://dark.society.systems/repository" class="attachmentpreview">
+                        <img src="https://dark.society.systems/wp-content/uploads/2023/08/B004_A040_30_POST-DMG_15x10-07RC_300DPI-300x200.jpg" alt="">
+                        <div class="attachmentpreview__overlay"></div>
+                    </a>
+                    <a href="https://dark.society.systems/repository" class="attachmentpreview">
+                        <img src="https://dark.society.systems/wp-content/uploads/2023/08/A01_03_AN_10x15_07RC-300DPI-min-200x300.png" alt="">
+                        <div class="attachmentpreview__overlay"></div>
+                    </a>
+                    <a href="https://dark.society.systems/repository" class="attachmentpreview">
+                        <img src="https://dark.society.systems/wp-content/uploads/2023/08/AA_IMG1_ds-300x200.png" alt="">
+                        <div class="attachmentpreview__overlay"></div>
+                    </a>
+                    <!-- Add more images as needed -->
                 </div>
-                <!-- Add more repo items as needed -->
             </div>
         </div>
     </div>
 
+    <!-- Mandelbrot Canvas -->
+    <canvas id="mandelbrotCanvas"></canvas>
+
     <script>
-        const videos = [
-            {
-                title: 'Artwork 1',
-                thumbnail: 'path/to/image1.jpg',
-                description: 'This is a description of Artwork 1.'
-            },
-            {
-                title: 'Artwork 2',
-                thumbnail: 'path/to/image2.jpg',
-                description: 'This is a description of Artwork 2.'
-            },
-            {
-                title: 'Artwork 3',
-                thumbnail: 'path/to/image3.jpg',
-                description: 'This is a description of Artwork 3.'
+        const clientId = '6971848dee6d4f8ea9086d4da85a67f0';
+        const clientSecret = 'b14b1ac579234bdb9c0580e129c807a2';
+        const playlistId = '6QgubomqWSMmM5cBN2d8V3';
+
+        async function getAccessToken(clientId, clientSecret) {
+            const result = await fetch('https://accounts.spotify.com/api/token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+                },
+                body: 'grant_type=client_credentials'
+            });
+
+            const data = await result.json();
+            return data.access_token;
+        }
+
+        async function getPlaylistDetails(accessToken) {
+            const result = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                }
+            });
+
+            const data = await result.json();
+            document.getElementById('playlistName').textContent = data.name;
+            document.getElementById('playlistCover').src = data.images[0].url;
+        }
+
+        async function loadSpotifyData() {
+            const accessToken = await getAccessToken(clientId, clientSecret);
+            await getPlaylistDetails(accessToken);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadSpotifyData);
+
+        // Mandelbrot Rendering Script
+        function drawMandelbrot() {
+            const canvas = document.getElementById('mandelbrotCanvas');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width = window.innerWidth;
+            const height = canvas.height = window.innerHeight;
+
+            const maxIterations = 100;
+            const zoom = 300;
+            const panX = 2;
+            const panY = 1.5;
+
+            for (let x = 0; x < width; x++) {
+                for (let y = 0; y < height; y++) {
+                    let zx = (x / zoom) - panX;
+                    let zy = (y / zoom) - panY;
+                    let cX = zx;
+                    let cY = zy;
+                    let i = maxIterations;
+                    while (zx * zx + zy * zy < 4 && i > 0) {
+                        let tmp = zx * zx - zy * zy + cX;
+                        zy = 2.0 * zx * zy + cY;
+                        zx = tmp;
+                        i--;
+                    }
+
+                    const pixelColor = (i === 0) ? 0 : i * 16;
+                    ctx.fillStyle = `rgb(${pixelColor}, ${pixelColor}, ${pixelColor})`;
+                    ctx.fillRect(x, y, 1, 1);
+                }
             }
-            // Add more videos/images as needed
-        ];
+        }
 
-        const repoGrid = document.querySelector('.repo-grid');
-
-        videos.forEach(video => {
-            const repoItem = document.createElement('div');
-            repoItem.className = 'repo-item';
-            repoItem.innerHTML = `
-                <img src="${video.thumbnail}" alt="${video.title}">
-                <h3>${video.title}</h3>
-            `;
-            repoGrid.appendChild(repoItem);
-        });
+        drawMandelbrot();
     </script>
 </body>
 </html>
