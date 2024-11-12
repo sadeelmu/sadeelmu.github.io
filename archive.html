@@ -26,20 +26,11 @@
             margin: 0;
         }
 
-        .filter-container {
-            display: flex;
-            justify-content: space-around;
-            background-color: rgba(0, 0, 0, 0.7);
+        .title-box h2 {
+            font-size: 12px;
+            margin: 0;
             padding: 10px;
-        }
-
-        .filter-container select {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 5px;
-            font-size: 16px;
-            border-radius: 5px;
+            color: black;
         }
 
         .repository-grid {
@@ -55,6 +46,7 @@
             border-radius: 8px;
             position: relative;
             transition: transform 0.3s ease;
+            overflow: hidden;
         }
 
         .repository-item img,
@@ -95,46 +87,30 @@
             color: white;
             margin: 10px;
         }
+
+        .repository-item .info-label {
+            font-weight: bold;
+            color: #fffa;
+        }
+
+        .repository-item .info-value {
+            color: #ccc;
+        }
+
+        #mandelbrotCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
     <div class="title-box">
         <h1>Vintage Archive</h1>
         <h2>Cartography of Darkness</h2>
-    </div>
-
-    <!-- Filters for Repository Items -->
-    <div class="filter-container">
-        <select>
-            <option>Media Type</option>
-            <option>Photograph</option>
-            <option>Audio</option>
-            <option>Note</option>
-        </select>
-        <select>
-            <option>Content</option>
-            <option>Electricity</option>
-            <option>Pollution</option>
-            <option>Waste</option>
-        </select>
-        <select>
-            <option>Container</option>
-            <option>Envelope</option>
-            <option>Album</option>
-        </select>
-        <select>
-            <option>Theme</option>
-            <option>Quarry</option>
-            <option>Toxic Waste</option>
-            <option>Energy</option>
-        </select>
-        <select>
-            <option>Author</option>
-            <option>Pierre Malychef</option>
-            <option>Omar Itani</option>
-        </select>
-        <input type="text" placeholder="Search the repository" style="padding: 5px; border-radius: 5px;">
-        <button style="padding: 5px 15px; border-radius: 5px; background-color: #333; color: white;">Search</button>
     </div>
 
     <!-- Repository Grid -->
@@ -145,7 +121,13 @@
             <div class="overlay"></div>
             <div class="description">
                 <div class="title">Image 1</div>
-                <p>Photograph of residential area and electric poles, depicting urban life and the electric grid.</p>
+                <p>
+                    <span class="info-label">Media Type:</span> Photograph<br>
+                    <span class="info-label">Content:</span> Cable, Electric Pole, Residential, Road, Vegetation, Vehicle<br>
+                    <span class="info-label">Container:</span> Album<br>
+                    <span class="info-label">Theme:</span> Electricity, Energy<br>
+                    <span class="info-label">Author:</span> Pierre Malychef
+                </p>
             </div>
         </a>
         <!-- Example Repository Item 2 -->
@@ -154,7 +136,13 @@
             <div class="overlay"></div>
             <div class="description">
                 <div class="title">Image 2</div>
-                <p>Close-up photograph of electricity infrastructure, showing the technical aspect of power systems.</p>
+                <p>
+                    <span class="info-label">Media Type:</span> Photograph<br>
+                    <span class="info-label">Content:</span> Electric Pole, Residential, Road, Vegetation, Vehicle<br>
+                    <span class="info-label">Container:</span> Album<br>
+                    <span class="info-label">Theme:</span> Electricity, Energy<br>
+                    <span class="info-label">Author:</span> Pierre Malychef
+                </p>
             </div>
         </a>
         <!-- Example Repository Item 3 (Video Thumbnail) -->
@@ -163,7 +151,13 @@
             <div class="overlay"></div>
             <div class="description">
                 <div class="title">Video 1</div>
-                <p>Video showing electricity generation from a power plant, highlighting energy production and environmental concerns.</p>
+                <p>
+                    <span class="info-label">Media Type:</span> Video<br>
+                    <span class="info-label">Content:</span> Electricity Generation, Power Plant<br>
+                    <span class="info-label">Container:</span> Digital<br>
+                    <span class="info-label">Theme:</span> Energy Production<br>
+                    <span class="info-label">Author:</span> Omar Itani
+                </p>
             </div>
         </a>
     </div>
