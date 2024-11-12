@@ -4,40 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sadlye.fm</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #000000;
             color: white;
             margin: 0;
+            padding: 0;
             overflow: hidden;
-            text-align: center;
-            position: relative;
         }
 
         .title-box {
-            position: absolute;
-            top: 20px;
-            width: 100%;
-            z-index: 20; 
-            background-color: rgba(255, 255, 255, 0.8); 
-            padding: 10px 0; 
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
+            text-align: center;
             color: black;
+            position: relative;
+            z-index: 10;
         }
 
         .title-box h1 {
             font-size: 50px;
             margin: 0;
-            padding: 5;
-            color: black; 
         }
 
         .title-box h2 {
             font-size: 12px;
             margin: 0;
-            padding: 10;
-            color: black; 
+            padding: 10px;
+            color: black;
         }
 
         .main-content-wrapper {
@@ -99,7 +95,7 @@
 
         .repository-panel .panel__repositorygrid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 10px;
         }
 
@@ -111,14 +107,16 @@
             transition: transform 0.3s ease;
         }
 
-        .repository-panel .panel__repositorygrid img {
+        .repository-panel .panel__repositorygrid img,
+        .repository-panel .panel__repositorygrid video {
             width: 100%;
             height: auto;
             border-radius: 8px;
             transition: transform 0.3s ease;
         }
 
-        .repository-panel .panel__repositorygrid a:hover img {
+        .repository-panel .panel__repositorygrid a:hover img,
+        .repository-panel .panel__repositorygrid a:hover video {
             transform: scale(1.05);
         }
 
@@ -173,7 +171,7 @@
             <div class="panel__inner">
                 <div class="panel__title">
                     <h4>
-                        <a href="archive.html">Repository الحاوية</a>
+                        Repository الحاوية
                     </h4>
                 </div>
                 <div class="panel__description">
@@ -184,65 +182,31 @@
                     <a class="pill" href="archive.html">⦷ Enter Vintage Archive ⦶</a>
                 </div>
                 <div class="panel__repositorygrid">
-                    <!-- Loading Images and Video from GitHub visuals folder -->
+                    <!-- Image 1 -->
                     <a href="archive.html#image1" class="attachmentpreview">
                         <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/image1.png" alt="Image 1">
+                        <div class="attachmentpreview__overlay"></div>
                     </a>
+                    <!-- Image 2 -->
                     <a href="archive.html#image2" class="attachmentpreview">
                         <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/image2.png" alt="Image 2">
+                        <div class="attachmentpreview__overlay"></div>
                     </a>
-                    <!-- Video Thumbnail with Link to Archive -->
+                    <!-- Video Thumbnail -->
                     <a href="archive.html#video" class="attachmentpreview">
                         <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/video_thumbnail.png" alt="Video Thumbnail">
+                        <div class="attachmentpreview__overlay"></div>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Mandelbrot Canvas -->
+    <!-- Mandelbrot Canvas (Background) -->
     <canvas id="mandelbrotCanvas"></canvas>
 
     <script>
-        const clientId = '6971848dee6d4f8ea9086d4da85a67f0';
-        const clientSecret = 'b14b1ac579234bdb9c0580e129c807a2';
-        const playlistId = '6QgubomqWSMmM5cBN2d8V3';
-
-        async function getAccessToken(clientId, clientSecret) {
-            const result = await fetch('https://accounts.spotify.com/api/token', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
-                },
-                body: 'grant_type=client_credentials'
-            });
-
-            const data = await result.json();
-            return data.access_token;
-        }
-
-        async function getPlaylistDetails(accessToken) {
-            const result = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ' + accessToken
-                }
-            });
-
-            const data = await result.json();
-            document.getElementById('playlistName').textContent = data.name;
-            document.getElementById('playlistCover').src = data.images[0].url;
-        }
-
-        async function loadSpotifyData() {
-            const accessToken = await getAccessToken(clientId, clientSecret);
-            await getPlaylistDetails(accessToken);
-        }
-
-        document.addEventListener('DOMContentLoaded', loadSpotifyData);
-
-        // Mandelbrot Rendering Script
+        // Mandelbrot Rendering Script (as before)
         function drawMandelbrot() {
             const canvas = document.getElementById('mandelbrotCanvas');
             const ctx = canvas.getContext('2d');
