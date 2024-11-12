@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Archive</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #eee;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #222;
+            padding: 20px;
+            font-size: 28px;
+        }
+
+        .archive-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .archive-item {
+            background-color: #333;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .archive-item img, .archive-item video {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .archive-item h3 {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #ffbb00;
+        }
+
+        .archive-item p {
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        .archive-item a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            background-color: #ffbb00;
+            padding: 5px 10px;
+            color: #000;
+            border-radius: 5px;
+        }
+
+        .archive-item a:hover {
+            background-color: #ffaa00;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #222;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        Vintage Archive
+    </div>
+
+    <div class="archive-container">
+        <!-- Example Archive Item -->
+        <div class="archive-item">
+            <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/image1.png" alt="Image 1">
+            <h3>Image 1 Title</h3>
+            <p>This is the description of the first image in the vintage archive.</p>
+            <a href="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/image1.png" target="_blank">View Full Image</a>
+        </div>
+
+        <div class="archive-item">
+            <video controls>
+                <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/algeria.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3>Algeria Video</h3>
+            <p>This is the description for the Algeria video.</p>
+            <a href="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/algeria.mp4" target="_blank">View Full Video</a>
+        </div>
+        
+        <!-- Add more items as necessary -->
+    </div>
+
+    <div class="footer">
+        2000s Style - Retro Vibes Only
+    </div>
+
+</body>
+</html>
