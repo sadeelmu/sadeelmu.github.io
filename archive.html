@@ -39,14 +39,13 @@
         /* Scrollable content container */
         .archive-content-wrapper {
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Start from top */
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+            gap: 20px; /* Adjust the space between items */
             position: relative;
             z-index: 20;
-            overflow-y: scroll; /* Enable vertical scrolling */
-            height: 80vh; /* Set a fixed height */
+            overflow-y: auto; /* Enable vertical scrolling */
+            height: 80vh; /* Set a fixed height for the container */
             width: 100%;
         }
 
@@ -54,7 +53,6 @@
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
-            width: 80%;
             color: white;
             text-align: left;
         }
@@ -155,38 +153,38 @@
             <p><span class="info-label">Source:</span> Archive footage</p>
             <p><span class="info-label">Year:</span> 1967</p>
         </div>
-               <!-- Archive Item 4 (Video for Leila) -->
-               <div class="archive-item">
-                <video controls>
-                    <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c27147bffdf9c926daa343a3943ff78bb0ae16dd/visuals/leilavid.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <h3>المناضلة ليلى خالد</h3>
-                <p><span class="info-label">Content:</span>Interview of Leila Khaled</p>
-                <p><span class="info-label">Technique:</span> Geometric</p>
-                <p><span class="info-label">Source:</span> Rare interview</p>
-            </div>
-    
-            <!-- Archive Item 5 (Image for Palestine) -->
-            <div class="archive-item">
-                <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c857dbfd0d6932ffec0cf3dc535fef453b2bca19/visuals/palestine.png" alt="palestine">
-                <h3>Cyber Palestine under Construction</h3>
-                <p><span class="info-label">Content:</span> Cyber Palestine by Elia Suleiman, overlayed with deco circles.</p>
-                <p><span class="info-label">Technique:</span> Geometric</p>
-                <p><span class="info-label">Source:</span> Elia Suleiman</p>
-                <p><span class="info-label">Year:</span> 1999</p>
-            </div>
-    
-            <!-- Archive Item 6 (Video for Paint) -->
-            <div class="archive-item">
-                <video controls>
-                    <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c27147bffdf9c926daa343a3943ff78bb0ae16dd/visuals/paint.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <h3>Rorschach</h3>
-                <p><span class="info-label">Content:</span> Geometric visuals inspired by the Rorschach test.</p>
-                <p><span class="info-label">Technique:</span> Geometric</p>
-            </div>
+
+        <!-- Archive Item 4 (Video for Leila) -->
+        <div class="archive-item">
+            <video controls>
+                <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c27147bffdf9c926daa343a3943ff78bb0ae16dd/visuals/leilavid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p><span class="info-label">Content:</span> المناضلة ليلى خالد</p>
+            <p><span class="info-label">Technique:</span> Geometric</p>
+            <p><span class="info-label">Source:</span> Rare interview</p>
+        </div>
+
+        <!-- Archive Item 5 (Image for Palestine) -->
+        <div class="archive-item">
+            <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c857dbfd0d6932ffec0cf3dc535fef453b2bca19/visuals/palestine.png" alt="palestine">
+            <h3>Cyber Palestine under Construction</h3>
+            <p><span class="info-label">Content:</span> Cyber Palestine by Elia Suleiman, overlayed with deco circles.</p>
+            <p><span class="info-label">Technique:</span> Geometric</p>
+            <p><span class="info-label">Source:</span> Elia Suleiman</p>
+            <p><span class="info-label">Year:</span> 1999</p>
+        </div>
+
+        <!-- Archive Item 6 (Video for Paint) -->
+        <div class="archive-item">
+            <video controls>
+                <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c27147bffdf9c926daa343a3943ff78bb0ae16dd/visuals/paint.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3>Rorschach</h3>
+            <p><span class="info-label">Content:</span> Geometric visuals inspired by the Rorschach test.</p>
+            <p><span class="info-label">Technique:</span> Geometric</p>
+        </div>
     </div>
 
     <!-- Mandelbrot Canvas (Background) -->
