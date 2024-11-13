@@ -13,6 +13,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            position: relative;
         }
 
         .title-box {
@@ -36,76 +37,183 @@
             color: black;
         }
 
-        /* Scrollable content container with 3 items per row */
-        .archive-content-wrapper {
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-            gap: 20px;
+        .main-content-wrapper {
+            display: flex;
+            justify-content: right;
+            gap: 5px;
             position: relative;
             z-index: 20;
-            overflow-y: scroll; /* Enable vertical scrolling */
-            height: 80vh; /* Set a fixed height */
             width: 100%;
         }
 
-        .archive-item {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
+        .radio-box {
+            width: 20%;
+            height: 50%;
+            border: 2px solid white;
             border-radius: 10px;
-            color: white;
-            text-align: left;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
         }
 
-        .archive-item img,
-        .archive-item video {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .archive-item .info-label {
-            font-weight: bold;
-            color: #fffa;
-        }
-
-        .archive-item .info-value {
-            color: #ccc;
-        }
-
-        /* Scrollable canvas background */
-        #mandelbrotCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            width: 100%;
-            height: 100%;
+        .repository-panel {
+            width: 25%;
+            height: 50%;
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
         }
 
         .logo-link {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 20;
-    cursor: pointer;
-}
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 20;
+            cursor: pointer;
+        }
 
-.logo-link img {
-    width: 60px; /* Increased the size */
-    height: 60px; /* Increased the size */
-    border-radius: 20%;
-    transition: transform 0.3s ease;
-}
+        .logo-link img {
+            width: 60px; /* Increased the size */
+            height: 60px; /* Increased the size */
+            border-radius: 20%;
+            transition: transform 0.3s ease;
+        }
 
-.logo-link img:hover {
-    transform: scale(1.1);
-}
+        .logo-link img:hover {
+            transform: scale(1.1);
+        }
 
+        .playlist-cover img {
+            text-align: center;
+            border-radius: 12px;
+            padding-bottom: 5px;
+            width: 70%;
+            height: 70%;
+        }
+
+        .playlist-details {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .playlist-details h2 {
+            align-self: center;
+            font-size: 30px;
+            margin: 5px 0;
+        }
+
+        .radio-box {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .repository-panel {
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+
+        .repository-panel .panel__title h4 {
+            margin: 0;
+            font-size: 24px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .repository-panel .panel__title a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .repository-panel .panel__description {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #fff7f7;
+        }
+
+        .a {
+            font-size: 25px;
+            font-weight: bold;
+            color: white; 
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .p1 {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .repository-panel .panel__description .ar {
+            font-size: 14px;
+            color: #d1cccc;
+        }
+
+        /* Flexbox grid for images in archive */
+        .repository-panel .panel__repositorygrid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two images per row */
+            gap: 10px;
+            justify-items: center;
+            margin-top: 15px;
+        }
+
+        .repository-panel .panel__repositorygrid a {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+            width: 100%; /* Adjust width for better alignment */
+        }
+
+        .repository-panel .panel__repositorygrid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .repository-panel .panel__repositorygrid a:hover img {
+            transform: scale(1.1);
+        }
+
+        .repository-panel .panel__repositorygrid .attachmentpreview__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .repository-panel .panel__repositorygrid a:hover .attachmentpreview__overlay {
+            opacity: 1;
+        }
+
+        #mandelbrotCanvas {
+            position: fixed; /* Ensure it stays in the background */
+            top: 0;
+            left: 0;
+            z-index: -1; /* Set canvas behind other elements */
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
-    <!-- Logo linking to Home page -->
     <a href="index.html" class="logo-link">
         <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c1cfdde1af05697ee4c728998e01846159ee700f/visuals/angel.jpg" alt="Angel Logo"> 
     </a>
@@ -151,39 +259,6 @@
             <p><span class="info-label">Source:</span> Archive footage</p>
             <p><span class="info-label">Year:</span> 1967</p>
         </div>
-                <!-- Archive Item 4 (Video for Leila) -->
-                <div class="archive-item">
-                    <video controls>
-                        <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c27147bffdf9c926daa343a3943ff78bb0ae16dd/visuals/leilavid.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <h3> المناضلة ليلى خالد</h3>
-                    <p><span class="info-label">Content:</span> Interview with Leila Khaled</p>
-                    <p><span class="info-label">Technique:</span> Geometric</p>
-                    <p><span class="info-label">Source:</span> Rare interview</p>
-                    <p><span class="info-label">Year:</span> 1980s</p>
-                </div>
-        
-                <!-- Archive Item 5 (Image for Palestine) -->
-                <div class="archive-item">
-                    <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c857dbfd0d6932ffec0cf3dc535fef453b2bca19/visuals/palestine.png" alt="palestine">
-                    <h3>Cyber Palestine under Construction</h3>
-                    <p><span class="info-label">Content:</span> Cyber Palestine by Elia Suleiman, overlayed with deco circles.</p>
-                    <p><span class="info-label">Technique:</span> Geometric</p>
-                    <p><span class="info-label">Source:</span> Elia Suleiman</p>
-                    <p><span class="info-label">Year:</span> 1999</p>
-                </div>
-        
-                <!-- Archive Item 6 (Video for Paint) -->
-                <div class="archive-item">
-                    <video controls>
-                        <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c27147bffdf9c926daa343a3943ff78bb0ae16dd/visuals/paint.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <h3>Rorschach</h3>
-                    <p><span class="info-label">Content:</span> Geometric visuals inspired by the Rorschach test.</p>
-                    <p><span class="info-label">Technique:</span> Vector geometry and generation</p>
-                </div>
     </div>
     
     <!-- Mandelbrot Canvas (Background) -->
