@@ -35,25 +35,19 @@
             padding: 10px;
             color: black;
         }
-        
-        .logo-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 20;
-            cursor: pointer;
-            width: 60px; /* Adjust size */
-            height: 60px;
-        }
 
+        /* Scrollable content container */
         .archive-content-wrapper {
             padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
             position: relative;
             z-index: 20;
+            overflow-y: scroll; /* Enable vertical scrolling */
+            height: 80vh; /* Set a fixed height */
+            width: 100%;
         }
 
         .archive-item {
@@ -81,6 +75,7 @@
             color: #ccc;
         }
 
+        /* Scrollable canvas background */
         #mandelbrotCanvas {
             position: absolute;
             top: 0;
@@ -89,53 +84,81 @@
             width: 100%;
             height: 100%;
         }
+
+        /* Logo styling */
+        .logo-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 20;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+        }
+
+        .logo-link img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link img:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
+    <!-- Logo linking to Home page -->
     <a href="index.html" class="logo-link">
-        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c1cfdde1af05697ee4c728998e01846159ee700f/visuals/angel.jpg" alt="Angel Logo"> <!-- Updated with provided permalink -->
+        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c1cfdde1af05697ee4c728998e01846159ee700f/visuals/angel.jpg" alt="Angel Logo"> 
     </a>
 
     <div class="title-box">
-        <h1>Visuals Archive</h1>
-        <h2>أرشيف المرئيات</h2>
+        <h1>sadlye.fm</h1>
+        <h2>why did god spare you?</h2>
     </div>
 
     <div class="archive-content-wrapper">
+        <!-- Archive Item 1 (Image 1) -->
         <div class="archive-item">
             <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/d5693e2b1c3a65e15cf833348d671c8af19a83d6/visuals/jerusalem.png" alt="jerusalem">
             <h3>Image 1</h3>
-            <p><span class="info-label">Content:</span> Vintage footage of the Masjid al Aqsa overlayed with mosiac geometric visuals.</p>
+            <p><span class="info-label">Content:</span> Vintage footage of the Masjid al Aqsa overlayed with mosaic geometric visuals.</p>
             <p><span class="info-label">Technique:</span> Noise</p>
             <p><span class="info-label">Source:</span> Archive footage</p>
             <p><span class="info-label">Year:</span> 1900</p>
         </div>
         
+        <!-- Archive Item 2 (Video) -->
         <div class="archive-item">
             <video controls>
                 <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c857dbfd0d6932ffec0cf3dc535fef453b2bca19/visuals/theydonotexist.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <h3>Video 3</h3>
-            <p><span class="info-label">Content:</span> Vintage footage from Algeria of the Algerians celebrating independence from the French and is overlayed with a visual effect that is audio reactive to the song Ecoute moin camerade by Mazouni</p>
-            <p><span class="info-label">Technique:</span> RGB</p>
-            <p><span class="info-label">Source:</span> Archive Footage</p>
-            <p><span class="info-label">Year:</span> 1962</p>
+            <p><span class="info-label">Content:</span> Clips from 'They Do Not Exist' by Mustafa Abu Ali overlayed with ASCII letters of the word 'Palestine' creating an RGB effect</p>
+            <p><span class="info-label">Technique:</span> RGB and ASCII</p>
+            <p><span class="info-label">Source:</span> Mustafa Abu Ali</p>
+            <p><span class="info-label">Year:</span> 1974</p>
         </div>
         
+        <!-- Archive Item 3 (Video) -->
         <div class="archive-item">
             <video controls>
                 <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/1abe30c6cdb456921cac655da05bdb4cda97dee3/visuals/algeria.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <h3>Video 1</h3>
-            <p><span class="info-label">Content:</span> Vintage footage from Algeria in the summer of 1967 after the independence and is overlayed with audio reactive geometric visuals.</p>
-            <p><span class="info-label">Technique:</span> Audio reactive</p>
+            <p><span class="info-label">Content:</span> Vintage footage from Algeria in the summer of 1967 after independence, overlayed with audio-reactive geometric visuals.</p>
+            <p><span class="info-label">Technique:</span> Audio-reactive</p>
             <p><span class="info-label">Source:</span> Archive footage</p>
             <p><span class="info-label">Year:</span> 1967</p>
         </div>
     </div>
+    
     <div class="archive-content-wrapper">
+        <!-- Archive Item 4 (Video for Leila) -->
         <div class="archive-item">
             <video controls>
                 <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c27147bffdf9c926daa343a3943ff78bb0ae16dd/visuals/leilavid.mp4" type="video/mp4">
@@ -145,14 +168,18 @@
             <p><span class="info-label">Technique:</span> Geometric</p>
             <p><span class="info-label">Source:</span> Rare interview</p>
         </div>
+
+        <!-- Archive Item 5 (Image for Palestine) -->
         <div class="archive-item">
             <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c857dbfd0d6932ffec0cf3dc535fef453b2bca19/visuals/palestine.png" alt="palestine">
             <h3>Image 1</h3>
-            <p><span class="info-label">Content:</span> Cyber Palestine by Elia Suleiman overlayed with deco circles.</p>
+            <p><span class="info-label">Content:</span> Cyber Palestine by Elia Suleiman, overlayed with deco circles.</p>
             <p><span class="info-label">Technique:</span> Geometric</p>
-            <p><span class="info-label">Source:</span>Elia Suleiman</p>
+            <p><span class="info-label">Source:</span> Elia Suleiman</p>
             <p><span class="info-label">Year:</span> 1999</p>
         </div>
+
+        <!-- Archive Item 6 (Video for Paint) -->
         <div class="archive-item">
             <video controls>
                 <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c27147bffdf9c926daa343a3943ff78bb0ae16dd/visuals/paint.mp4" type="video/mp4">
@@ -163,12 +190,11 @@
         </div>
     </div>
 
-
     <!-- Mandelbrot Canvas (Background) -->
     <canvas id="mandelbrotCanvas"></canvas>
 
     <script>
-        // Mandelbrot Rendering Script (as before)
+        // Mandelbrot Rendering Script
         function drawMandelbrot() {
             const canvas = document.getElementById('mandelbrotCanvas');
             const ctx = canvas.getContext('2d');
