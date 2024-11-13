@@ -203,8 +203,8 @@
         <div class="radio-box">
             <!-- Spotify Playlist Image and Title -->
             <div class="playlist-details">
-                <h2 id="playlistName">Playlist Title</h2>
-                <img id="playlistCover" src="https://i.scdn.co/image/ab67616d0000b27356aeb207299b221581e4579f" alt="Playlist Cover" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
+                <h2 id="playlistName">Loading...</h2>
+                <img id="playlistCover" src="" alt="Playlist Cover" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
             </div>
             <div class="control-buttons">
                 <!-- Spotify Embed -->
@@ -217,7 +217,45 @@
     <canvas id="mandelbrotCanvas"></canvas>
 
     <script>
-        // Mandelbrot Rendering Script (as before)
+        const clientId = '6971848dee6d4f8ea9086d4da85a67f0';
+        const clientSecret = 'b14b1ac579234bdb9c0580e129c807a2';
+        const playlistId = '6QgubomqWSMmM5cBN2d8V3';
+
+        async function getAccessToken(clientId, clientSecret) {
+            const result = await fetch('https://accounts.spotify.com/api/token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+                },
+                body: 'grant_type=client_credentials'
+            });
+
+            const data = await result.json();
+            return data.access_token;
+        }
+
+        async function getPlaylistDetails(accessToken) {
+            const result = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                }
+            });
+
+            const data = await result.json();
+            document.getElementById('playlistName').textContent = data.name;
+            document.getElementById('playlistCover').src = data.images[0].url;
+        }
+
+        async function loadSpotifyData() {
+            const accessToken = await getAccessToken(clientId, clientSecret);
+            await getPlaylistDetails(accessToken);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadSpotifyData);
+
+        // Mandelbrot Rendering Script
         function drawMandelbrot() {
             const canvas = document.getElementById('mandelbrotCanvas');
             const ctx = canvas.getContext('2d');
