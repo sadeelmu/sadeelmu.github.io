@@ -36,16 +36,16 @@
             color: black;
         }
 
-        /* Scrollable content container */
+        /* Scrollable content container with 3 items per row */
         .archive-content-wrapper {
             padding: 20px;
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-            gap: 20px; /* Adjust the space between items */
+            gap: 20px;
             position: relative;
             z-index: 20;
-            overflow-y: auto; /* Enable vertical scrolling */
-            height: 80vh; /* Set a fixed height for the container */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            height: 80vh; /* Set a fixed height */
             width: 100%;
         }
 
@@ -153,14 +153,17 @@
             <p><span class="info-label">Source:</span> Archive footage</p>
             <p><span class="info-label">Year:</span> 1967</p>
         </div>
-
+    </div>
+    
+    <div class="archive-content-wrapper">
         <!-- Archive Item 4 (Video for Leila) -->
         <div class="archive-item">
             <video controls>
                 <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c27147bffdf9c926daa343a3943ff78bb0ae16dd/visuals/leilavid.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <p><span class="info-label">Content:</span> المناضلة ليلى خالد</p>
+            <h3> المناضلة ليلى خالد</h3>
+            <p><span class="info-label">Content:</span> Interview with Leila Khaled</p>
             <p><span class="info-label">Technique:</span> Geometric</p>
             <p><span class="info-label">Source:</span> Rare interview</p>
         </div>
@@ -181,7 +184,6 @@
                 <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c27147bffdf9c926daa343a3943ff78bb0ae16dd/visuals/paint.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <h3>Rorschach</h3>
             <p><span class="info-label">Content:</span> Geometric visuals inspired by the Rorschach test.</p>
             <p><span class="info-label">Technique:</span> Geometric</p>
         </div>
