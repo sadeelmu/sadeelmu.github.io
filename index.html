@@ -17,7 +17,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column; /* Stack elements vertically on smaller screens */
         }
 
         .title-box {
@@ -45,8 +44,7 @@
 
         .main-content-wrapper {
             display: flex;
-            flex-wrap: wrap; /* Allow wrapping of content */
-            justify-content: center;
+            justify-content: right;
             gap: 5px;
             position: relative;
             z-index: 20;
@@ -78,23 +76,24 @@
         }
 
         .logo-link {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 20;
-            cursor: pointer;
-        }
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 20;
+    cursor: pointer;
+}
 
-        .logo-link img {
-            width: 60px; /* Increased the size */
-            height: 60px; /* Increased the size */
-            border-radius: 20%;
-            transition: transform 0.3s ease;
-        }
+.logo-link img {
+    width: 60px; /* Increased the size */
+    height: 60px; /* Increased the size */
+    border-radius: 20%;
+    transition: transform 0.3s ease;
+}
 
-        .logo-link img:hover {
-            transform: scale(1.1);
-        }
+.logo-link img:hover {
+    transform: scale(1.1);
+}
+
 
         .playlist-cover img {
             text-align: center;
@@ -113,6 +112,10 @@
             align-self: center;
             font-size: 30px;
             margin: 5px 0;
+        }
+
+        .radio-box {
+            background-color: rgba(0, 0, 0, 0.7);
         }
 
         .repository-panel {
@@ -146,12 +149,12 @@
         .a {
             font-size: 25px;
             font-weight: bold;
-            color: white;
-            text-align: center;
-            padding-top: 10px;
-        }
+             color: white; 
+             text-align: center;
+             padding-top: 10px;
+            }
 
-        .p1 {
+        .p1{
             font-size: 18px;
             font-weight: bold;
             color: white;
@@ -177,7 +180,7 @@
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease;
-            width: 100%;
+            width: 100%; /* Adjust width for better alignment */
         }
 
         .repository-panel .panel__repositorygrid img {
@@ -214,64 +217,11 @@
             width: 100%;
             height: 100%;
         }
-
-        /* Media Queries for smaller screens */
-        @media (max-width: 768px) {
-            .radio-box, .repository-panel {
-                width: 40%; /* Adjust size on tablets and small screens */
-            }
-
-            .main-content-wrapper {
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .repository-panel {
-                width: 80%; /* Take up most of the screen on small devices */
-                margin-bottom: 20px;
-            }
-
-            .radio-box {
-                width: 80%;
-                margin-bottom: 20px;
-            }
-
-            .title-box h1 {
-                font-size: 30px; /* Smaller title on smaller screens */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .radio-box, .repository-panel {
-                width: 90%; /* Even smaller on phones */
-            }
-
-            .main-content-wrapper {
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .title-box h1 {
-                font-size: 24px; /* Even smaller title */
-            }
-
-            .playlist-details h2 {
-                font-size: 20px;
-            }
-
-            .repository-panel .panel__repositorygrid {
-                grid-template-columns: 1fr; /* Only one item per row on small devices */
-            }
-
-            .repository-panel .panel__repositorygrid a {
-                width: 100%;
-            }
-        }
     </style>
 </head>
 <body>
     <a href="index.html" class="logo-link">
-        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c1cfdde1af05697ee4c728998e01846159ee700f/visuals/angel.jpg" alt="Angel Logo">
+        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c1cfdde1af05697ee4c728998e01846159ee700f/visuals/angel.jpg" alt="Angel Logo"> <!-- Updated with provided permalink -->
     </a>
 
     <div class="title-box">
@@ -290,19 +240,19 @@
                     </div>
                 </div>
                 <div class="panel__repositorygrid">
-                    <a href="archive.html" class="attachmentpreview">
+                    <a href="archive.html#image1" class="attachmentpreview">
                         <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/d5693e2b1c3a65e15cf833348d671c8af19a83d6/visuals/jerusalem.png" alt="Image 1">
                         <div class="attachmentpreview__overlay"></div>
                     </a>
-                    <a href="archive.html" class="attachmentpreview">
+                    <a href="archive.html#image4" class="attachmentpreview">
                         <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/fb50038f965f08c4b3f48476df3766a485c5b217/visuals/palestine.png" alt="Image 2">
                         <div class="attachmentpreview__overlay"></div>
                     </a>
-                    <a href="archive.html" class="attachmentpreview">
+                    <a href="archive.html#image4" class="attachmentpreview">
                         <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/fe7896c07eb67d7b550edfdd9bb5df69a14bdada/visuals/leila.png" alt="Image 2">
                         <div class="attachmentpreview__overlay"></div>
                     </a>
-                    <a href="archive.html" class="attachmentpreview">
+                    <a href="archive.html#image4" class="attachmentpreview">
                         <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/fe7896c07eb67d7b550edfdd9bb5df69a14bdada/visuals/imperialsts.png" alt="Image 2">
                         <div class="attachmentpreview__overlay"></div>
                     </a>
