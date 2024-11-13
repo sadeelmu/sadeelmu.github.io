@@ -13,6 +13,10 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .title-box {
@@ -20,7 +24,9 @@
             padding: 10px 0;
             text-align: center;
             color: black;
-            position: relative;
+            position: absolute;
+            top: 20px;
+            width: 100%;
             z-index: 10;
         }
 
@@ -38,18 +44,18 @@
 
         .main-content-wrapper {
             display: flex;
-            justify-content: end;
-            align-items: end;
+            justify-content: center;
             gap: 20px;
-            margin: 20px;
+            margin-top: 100px;
             position: relative;
             z-index: 20;
+            width: 80%; /* Adjusting width for the panels */
         }
 
         .radio-box,
         .repository-panel {
-            width: 25%;
-            height: 400px;
+            width: 40%;
+            height: 500px;
             border: 2px solid white;
             border-radius: 10px;
             padding: 20px;
@@ -65,21 +71,23 @@
 
         .repository-panel {
             background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .repository-panel .panel__inner {
-            text-align: left;
+            text-align: center;
         }
 
         .repository-panel .panel__title h4 {
             margin: 0;
             font-size: 24px;
             color: #fff;
+            font-weight: bold;
         }
 
         .repository-panel .panel__title a {
-            color: #fff;
+            color: white;
+            font-weight: bold;
             text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            margin-top: 10px;
         }
 
         .repository-panel .panel__description {
@@ -96,7 +104,7 @@
 
         .repository-panel .panel__repositorygrid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 10px;
         }
 
@@ -108,16 +116,14 @@
             transition: transform 0.3s ease;
         }
 
-        .repository-panel .panel__repositorygrid img,
-        .repository-panel .panel__repositorygrid video {
+        .repository-panel .panel__repositorygrid img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             transition: transform 0.3s ease;
         }
 
-        .repository-panel .panel__repositorygrid a:hover img,
-        .repository-panel .panel__repositorygrid a:hover video {
+        .repository-panel .panel__repositorygrid a:hover img {
             transform: scale(1.05);
         }
 
@@ -149,7 +155,7 @@
 <body>
     <div class="title-box">
         <h1>sadlye.fm</h1>
-        <h2>why did god spare you?</h2>
+        <h1>why did god spare you?</h1>
     </div>
 
     <div class="main-content-wrapper">
@@ -157,24 +163,24 @@
         <div class="repository-panel panel--repository panel--active">
             <div class="panel__inner">
                 <div class="panel__title">
-                    <h4>
-                        أرشيف المرئيات
-                    </h4>
+                    <h4>Visuals archive</h4>
                 </div>
                 <div class="panel__description">
                     Visuals archive
                     <div class="ar">
-                        <p class="p1" dir="rtl"> أرشيف المرئيات </p>
+                        <p class="p1" dir="rtl">أرشيف المرئيات</p>
                     </div>
-                    <a class="p1" href="archive.html">⦷ تفضل ع الأرشيف ⦶</a>
+                    <a href="archive.html">⦷ Enter the archive ⦶</a>
                 </div>
                 <div class="panel__repositorygrid">
+                    <!-- Image 1 -->
                     <a href="archive.html#image1" class="attachmentpreview">
                         <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/d5693e2b1c3a65e15cf833348d671c8af19a83d6/visuals/jerusalem.png" alt="Image 1">
                         <div class="attachmentpreview__overlay"></div>
                     </a>
+                    <!-- Image 2 -->
                     <a href="archive.html#image4" class="attachmentpreview">
-                        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/41c573af12d7521add8b250ac5a62e88a346f006/visuals/palestine.png" alt="Image 2">
+                        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/fb50038f965f08c4b3f48476df3766a485c5b217/visuals/palestine.png" alt="Image 2">
                         <div class="attachmentpreview__overlay"></div>
                     </a>
                 </div>
