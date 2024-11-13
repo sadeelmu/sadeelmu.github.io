@@ -184,7 +184,6 @@
                 </div>
     </div>
     
-
     <!-- Mandelbrot Canvas (Background) -->
     <canvas id="mandelbrotCanvas"></canvas>
 
@@ -216,7 +215,7 @@
                     }
 
                     const pixelColor = (i === 0) ? 0 : i * 16;
-                    ctx.fillStyle = `rgb(${pixelColor}, ${pixelColor}, ${pixelColor})`;
+                    ctx.fillStyle = rgb(${pixelColor}, ${pixelColor}, ${pixelColor});
                     ctx.fillRect(x, y, 1, 1);
                 }
             }
