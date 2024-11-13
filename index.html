@@ -116,9 +116,10 @@
         }
 
         .repository-panel .panel__repositorygrid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            display: flex;
             gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
         }
 
         .repository-panel .panel__repositorygrid a {
@@ -127,6 +128,7 @@
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease;
+            width: 45%;  /* Reduce the size of the images */
         }
 
         .repository-panel .panel__repositorygrid img {
@@ -175,14 +177,11 @@
         <!-- Repository Panel (Archive in the Middle) -->
         <div class="repository-panel panel--repository panel--active">
             <div class="panel__inner">
-                <div class="panel__title">
-                    <h4>Visuals archive</h4>
-                </div>
                 <div class="panel__description">
                     <div class="ar">
-                        <p class="p1" dir="rtl">أرشيف المرئيات</p>
+                        <p class="p1" dir="rtl"> Visuals archive أرشيف المرئيات</p>
                     </div>
-                    <a href="archive.html">⦷ Enter the archive ⦶</a>
+                    <a href="archive.html">⦷ تفضل غ الأرشيف ⦶</a>
                 </div>
                 <div class="panel__repositorygrid">
                     <!-- Image 1 -->
@@ -203,8 +202,8 @@
         <div class="radio-box">
             <!-- Spotify Playlist Image and Title -->
             <div class="playlist-details">
-                <h2 id="playlistName">Loading...</h2>
-                <img id="playlistCover" src="" alt="Playlist Cover" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
+                <h2 id="playlistName">Playlist Title</h2>
+                <img id="playlistCover" src="https://i.scdn.co/image/ab67616d0000b27356aeb207299b221581e4579f" alt="Playlist Cover" style="width: 60%; border-radius: 10px; margin-bottom: 15px;">
             </div>
             <div class="control-buttons">
                 <!-- Spotify Embed -->
