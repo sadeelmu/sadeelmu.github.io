@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +15,10 @@
             padding: 0;
             overflow: hidden;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         .title-box {
@@ -24,49 +26,37 @@
             padding: 10px 0;
             text-align: center;
             color: black;
-            position: absolute;
-            top: 20px;
-            width: 100%;
+            position: relative;
             z-index: 10;
+            width: 100%;
         }
 
         .title-box h1 {
-            font-size: 50px;
+            font-size: 35px;
             margin: 0;
         }
 
         .title-box h2 {
-            font-size: 13px;
+            font-size: 18px;
             margin: 0;
-            padding: 10px;
+            padding: 5px;
             color: black;
-            padding-bottom: 10px;
         }
 
         .main-content-wrapper {
             display: flex;
-            justify-content: right;
-            gap: 5px;
+            flex-direction: column;
+            gap: 20px;
             position: relative;
             z-index: 20;
-            width: 100%;
+            width: 90%;
+            max-width: 800px;
+            margin: 20px 0;
         }
 
-        .radio-box {
-            width: 20%;
-            height: 40%;
-            border: 2px solid white;
-            border-radius: 10px;
-            padding: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            position: relative;
-            z-index: 10;
-            overflow: hidden;
-        }
-
+        .radio-box,
         .repository-panel {
-            width: 25%;
-            height: 60%;
+            width: 100%;
             border: 2px solid white;
             border-radius: 10px;
             padding: 10px;
@@ -85,8 +75,8 @@
         }
 
         .logo-link img {
-            width: 60px; /* Increased the size */
-            height: 60px; /* Increased the size */
+            width: 50px;
+            height: 50px;
             border-radius: 20%;
             transition: transform 0.3s ease;
         }
@@ -98,67 +88,22 @@
         .playlist-cover img {
             text-align: center;
             border-radius: 12px;
-            padding-bottom: 5px;
-            padding-right: 5px;
-            width: 70%;
-            height: 70%;
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
         }
 
         .playlist-details {
             text-align: center;
-            margin-top: 15px;
         }
 
         .playlist-details h2 {
-            align-self: center;
-            font-size: 30px;
-            margin: 5px 0;
-        }
-
-        .radio-box {
-            background-color: rgba(0, 0, 0, 0.7);
+            font-size: 20px;
+            margin: 10px 0;
         }
 
         .repository-panel {
-            background-color: rgba(0, 0, 0, 0.8);
             text-align: center;
-        }
-
-        .repository-panel .panel__title h4 {
-            margin: 0;
-            font-size: 24px;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .repository-panel .panel__title a {
-            color: white;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 18px;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        .repository-panel .panel__description {
-            margin-top: 10px;
-            margin-bottom: 20px;
-            font-size: 16px;
-            color: #fff7f7;
-        }
-
-        .a {
-            font-size: 25px;
-            font-weight: bold;
-            color: white; 
-            text-align: center;
-            padding-top: 10px;
-        }
-
-        .p1 {
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
         }
 
         .repository-panel .panel__description .ar {
@@ -169,7 +114,7 @@
         /* Flexbox grid for images in archive */
         .repository-panel .panel__repositorygrid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Two images per row */
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             justify-items: center;
             margin-top: 15px;
@@ -181,7 +126,7 @@
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease;
-            width: 100%; /* Adjust width for better alignment */
+            width: 100%;
         }
 
         .repository-panel .panel__repositorygrid img {
@@ -211,18 +156,46 @@
         }
 
         #mandelbrotCanvas {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             z-index: 0;
             width: 100%;
             height: 100%;
         }
+
+        @media (min-width: 768px) {
+            body {
+                flex-direction: row;
+                height: 100vh;
+            }
+
+            .main-content-wrapper {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 80%;
+                max-width: 1200px;
+            }
+
+            .repository-panel,
+            .radio-box {
+                width: 45%;
+            }
+
+            .title-box h1 {
+                font-size: 50px;
+            }
+
+            .title-box h2 {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <a href="index.html" class="logo-link">
-        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c1cfdde1af05697ee4c728998e01846159ee700f/visuals/angel.jpg" alt="Angel Logo"> <!-- Updated with provided permalink -->
+        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c1cfdde1af05697ee4c728998e01846159ee700f/visuals/angel.jpg" alt="Angel Logo">
     </a>
 
     <div class="title-box">
@@ -237,7 +210,7 @@
                 <div class="panel__description">
                     <div class="ar">
                         <a href="archive.html" class="a">visuals archive</a>
-                        <p class="p1" dir="rtl">  ارشيف المرئيات </p>
+                        <p class="p1" dir="rtl"> ارشيف المرئيات </p>
                     </div>
                 </div>
                 <div class="panel__repositorygrid">
@@ -250,25 +223,22 @@
                         <div class="attachmentpreview__overlay"></div>
                     </a>
                     <a href="archive.html#image4" class="attachmentpreview">
-                        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/fe7896c07eb67d7b550edfdd9bb5df69a14bdada/visuals/leila.png" alt="Image 2">
+                        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/fe7896c07eb67d7b550edfdd9bb5df69a14bdada/visuals/leila.png" alt="Image 3">
                         <div class="attachmentpreview__overlay"></div>
                     </a>
                     <a href="archive.html#image4" class="attachmentpreview">
-                        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/fe7896c07eb67d7b550edfdd9bb5df69a14bdada/visuals/imperialsts.png" alt="Image 2">
+                        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/fe7896c07eb67d7b550edfdd9bb5df69a14bdada/visuals/imperialsts.png" alt="Image 4">
                         <div class="attachmentpreview__overlay"></div>
                     </a>
                 </div>
-
-                <a href="archive.html" class="a">تفضل غ الأرشيف</a>
             </div>
         </div>
 
         <!-- Radio Box (Right) -->
         <div class="radio-box">
-            <!-- Spotify Playlist Image and Title -->
             <div class="playlist-details">
                 <h2 id="playlistName" style="padding-bottom: 10px;">Playlist Title</h2>
-                <img id="playlistCover" src="https://i.scdn.co/image/ab67616d0000b27356aeb207299b221581e4579f" alt="Playlist Cover" style="border-radius: 10px; margin-bottom: 15px; padding-bottom: 10px;">
+                <img id="playlistCover" src="https://i.scdn.co/image/ab67616d0000b27356aeb207299b221581e4579f" alt="Playlist Cover" style="border-radius: 10px;">
             </div>
             <div class="control-buttons">
                 <!-- Spotify Embed -->
@@ -355,4 +325,5 @@
         drawMandelbrot();
     </script>
 </body>
+
 </html>
