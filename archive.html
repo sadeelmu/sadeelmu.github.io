@@ -1,10 +1,9 @@
-<!-- archive.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sadlye.fm - Visuals Archive</title>
+    <title>sadlye.fm</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -13,7 +12,7 @@
             color: white;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         .title-box {
@@ -23,23 +22,32 @@
             color: black;
             position: relative;
             z-index: 10;
-            width: 100%;
         }
 
         .title-box h1 {
-            font-size: 8vw; /* Adjusted to scale with screen size */
+            font-size: 50px;
             margin: 0;
         }
 
+        .title-box h2 {
+            font-size: 13px;
+            margin: 0;
+            padding: 10px;
+            color: black;
+            padding-bottom: 10px;
+        }
+
+        /* Scrollable content container with 3 items per row */
         .archive-content-wrapper {
             padding: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* 3 items per row */
             gap: 20px;
             position: relative;
             z-index: 20;
-            overflow-y: auto;
-            height: 80vh;
+            overflow-y: scroll; /* Enable vertical scrolling */
+            height: 80vh; /* Set a fixed height */
+            width: 100%;
         }
 
         .archive-item {
@@ -50,7 +58,8 @@
             text-align: left;
         }
 
-        .archive-item img, .archive-item video {
+        .archive-item img,
+        .archive-item video {
             width: 100%;
             height: auto;
             border-radius: 8px;
@@ -64,11 +73,47 @@
         .archive-item .info-value {
             color: #ccc;
         }
+
+        /* Scrollable canvas background */
+        #mandelbrotCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 20;
+            cursor: pointer;
+        }
+
+        .logo-link img {
+            width: 60px; /* Increased the size */
+            height: 60px; /* Increased the size */
+            border-radius: 20%;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link img:hover {
+            transform: scale(1.1);
+        }
+
     </style>
 </head>
 <body>
+    <!-- Logo linking to Home page -->
+    <a href="index.html" class="logo-link">
+        <img src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c1cfdde1af05697ee4c728998e01846159ee700f/visuals/angel.jpg" alt="Angel Logo"> 
+    </a>
+
     <div class="title-box">
-        <h1>sadlye.fm - Visuals Archive</h1>
+        <h1>sadlye.fm</h1>
+        <h2>visuals archive</h2>
     </div>
 
     <div class="archive-content-wrapper">
@@ -89,12 +134,12 @@
                 Your browser does not support the video tag.
             </video>
             <h3>They Do Not Exist</h3>
-            <p><span class="info-label">Content:</span> Clips from 'They Do Not Exist' by Mustafa Abu Ali overlayed with ASCII letters of the word 'Palestine' creating an RGB effect.</p>
+            <p><span class="info-label">Content:</span> Clips from 'They Do Not Exist' by Mustafa Abu Ali overlayed with ASCII letters of the word 'Palestine' creating an RGB effect</p>
             <p><span class="info-label">Technique:</span> RGB and ASCII</p>
             <p><span class="info-label">Source:</span> Mustafa Abu Ali</p>
             <p><span class="info-label">Year:</span> 1974</p>
         </div>
-
+        
         <!-- Archive Item 3 (Video) -->
         <div class="archive-item">
             <video controls>
@@ -131,20 +176,29 @@
             <p><span class="info-label">Year:</span> 1999</p>
         </div>
 
-        <!-- Archive Item 6 (Video for Tara's Camcorder) -->
         <div class="archive-item">
             <video controls>
                 <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/a918db973a19df91094c7dca2d92cccb2fe81ad7/visuals/tara.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <h3>Tara's Camcorder</h3>
+            <h3> Tara's Camcorder</h3>
             <p><span class="info-label">Content:</span> Footage of Lebanon in the summer of 2024</p>
             <p><span class="info-label">Technique:</span> Audio reactive pixels</p>
             <p><span class="info-label">Source:</span> Tara Tarawneh</p>
             <p><span class="info-label">Year:</span> 2024</p>
         </div>
-    </div>
 
+        <!-- <div class="archive-item">
+            <video controls>
+                <source src="https://raw.githubusercontent.com/sadeelmu/sadeelmu.github.io/c27147bffdf9c926daa343a3943ff78bb0ae16dd/visuals/paint.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3>Rorschach</h3>
+            <p><span class="info-label">Content:</span> Geometric visuals inspired by the Rorschach test.</p>
+            <p><span class="info-label">Technique:</span> Vector geometry and generation</p>
+        </div> -->
+    </div>
+    
     <!-- Mandelbrot Canvas (Background) -->
     <canvas id="mandelbrotCanvas"></canvas>
 
