@@ -33,12 +33,12 @@
         }
 
         .title-box h1 {
-            font-size: 8vw; /* Adjusted to scale with screen size */
+            font-size: 4vw; /* Adjusted to scale with screen size */
             margin: 0;
         }
 
         .title-box h2 {
-            font-size: 4vw; /* Adjusted to scale with screen size */
+            font-size: 1vw; /* Adjusted to scale with screen size */
             margin: 0;
             padding: 10px;
             color: black;
@@ -47,19 +47,35 @@
         .main-content-wrapper {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 5px;
             position: relative;
             z-index: 20;
-            width: 90%;
+            width: 100%;
             padding-top: 20px;
-            justify-content: center;
+            justify-content: right;
         }
 
-        .radio-box, .repository-panel {
+        .radio-box{
             flex: 1;
-            min-width: 280px;
+            min-width: 50px;
+            max-width: 300px;
+            min-height:75px;
+            max-height:500px;
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .repository-panel {
+            flex: 1;
+            min-width: 75px;
             max-width: 400px;
-            height: auto;
+            min-height:100px;
+            max-height:500px;
             border: 2px solid white;
             border-radius: 10px;
             padding: 10px;
@@ -78,8 +94,12 @@
         }
 
         .logo-link img {
-            width: 50px;
-            height: 50px;
+            max-width: 75px;
+
+            min-width: 10px;
+            min-height: 10px;
+            max-height: 75px;
+
             border-radius: 20%;
             transition: transform 0.3s ease;
         }
@@ -94,7 +114,7 @@
         }
 
         .playlist-details h2 {
-            font-size: 6vw;
+            font-size: 3vw;
             margin: 5px 0;
         }
         
@@ -154,7 +174,7 @@
 
             .main-content-wrapper {
                 padding: 10px;
-                gap: 10px;
+                gap: 5px;
             }
         }
     </style>
